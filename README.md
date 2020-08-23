@@ -54,7 +54,7 @@ Explicando a estrutura de diretórios que vamos utilizar
 ```
 
 
-Agora vamos pra parte prática: 
+## Agora vamos pra parte prática: 
 
 ```bash
 git clone https://github.com/cadeomontanha/literate-octo-couscous.git

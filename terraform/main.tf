@@ -5,7 +5,7 @@ resource "aws_instance" "ec2" {
   associate_public_ip_address = true
   vpc_security_group_ids = [aws_security_group.sg.id]
   tags = {
-    Name = "Stack Django CMS"
+    Name = "DJANGO CMS"
   }
 }
 

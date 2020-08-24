@@ -3,9 +3,10 @@ data "aws_availability_zones" "azs" {}
 resource "aws_vpc" "vpc" {
   cidr_block = var.vpc_cidr
 
-tags = {
-    Name = "Vpc Terraform"
+  tags = {
+    Name = "DJANGO CMS"
   }
+
 }
 
 resource "aws_subnet" "subnet" {
@@ -18,30 +19,33 @@ resource "aws_subnet" "subnet" {
 resource "aws_internet_gateway" "igw" {
     vpc_id = aws_vpc.vpc.id
 
-    tags = {
-     Name = "Igw Terraform"
-    }
+  tags = {
+    Name = "DJANGO CMS"
+  }
+
 }
 
 resource "aws_eip" "eip" {
     vpc = true
 
-    tags = {
-        Name = "Eip Terraform"
-    }
+  tags = {
+    Name = "DJANGO CMS"
+  }
+
 }
 
 resource "aws_route_table" "public" {
-     vpc_id = aws_vpc.vpc.id
+  vpc_id = aws_vpc.vpc.id
 
-     route {
-     cidr_block = "0.0.0.0/0"
-     gateway_id = aws_internet_gateway.igw.id
-     }
+  route {
+  cidr_block = "0.0.0.0/0"
+  gateway_id = aws_internet_gateway.igw.id
+  }
 
-     tags = {
-     Name = "RT Public Terraform"
-     }
+  tags = {
+    Name = "DJANGO CMS"
+  }
+
 }
 
 resource "aws_route_table_association" "public" {
@@ -51,12 +55,12 @@ resource "aws_route_table_association" "public" {
 }
 
 resource "aws_security_group" "sg" {
-      name = "SecurityGroup Terraform"
-      description = "This is for ${var.stack}s security group"
-      vpc_id = aws_vpc.vpc.id
-      tags = {
-      Name = "SG Terraform"
-      }
+  name = "SecurityGroup Terraform"
+  description = "This is for ${var.stack}s security group"
+  vpc_id = aws_vpc.vpc.id
+  tags = {
+    Name = "DJANGO CMS"
+  }
 }
 
 resource "aws_security_group_rule" "rule" {

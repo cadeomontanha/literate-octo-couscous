@@ -4,12 +4,14 @@
     name: 
       - djangocms-installer
       - django-cms
+    executable: pip3
 
 - name: Upgrade do djangoCMS e upgrade do CMS
   pip:
     name: django-cms
     version: 3.7.4
     extra_args: --upgrade
+    executable: pip3
 
 - name: Incluindo a variavel de ambiente para o pacote do django-cms
   shell: echo $PATH
@@ -27,6 +29,6 @@
    chdir: /app/
 
 - name: Importando arquivos estaticos do CMS
-  shell: python manage.py collectstatic
+  shell: python3 manage.py collectstatic
   args:
    chdir: /app/

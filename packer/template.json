@@ -5,7 +5,15 @@
         "access_key": "{{user `aws_access_key`}}",
         "secret_key": "{{user `aws_secret_key`}}",
         "region": "us-east-1",
-        "source_ami": "ami-0bcc094591f354be2",
+        "source_ami_filter": {
+           "filters": {
+              "virtualization-type": "hvm",
+              "name": "ubuntu/images/*ubuntu-xenial-16.04-amd64-server-*",
+              "root-device-type": "ebs"
+            },
+        "owners": ["amazon"],
+        "most_recent": true
+        },
         "instance_type": "t2.micro",
         "ssh_username": "ubuntu",
         "ami_name": "example-ami-packer",
@@ -26,6 +34,7 @@
           "../ansible/roles/supervisor",
           "../ansible/roles/nginx"
         ],
+        "extra_arguments": [ "-e", "ansible_python_interpreter='/usr/bin/python3'"],
         "group_vars": "../ansible/group_vars"
       },
       {
